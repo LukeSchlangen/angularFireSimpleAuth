@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAk9NQx_DjHVkUEJeG0jFBP-X23NQILzqg",
+        authDomain: "angular2base.firebaseapp.com",
+        databaseURL: "https://angular2base.firebaseio.com",
+        storageBucket: "firebase-angular2base.appspot.com",
+        messagingSenderId: "619942321960"
+      };
+      firebase.initializeApp(config);
+      firebase.initializeApp(config);
+    </script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="SampleCtrl">
+    <h1>Hi There!</h1>
+    <ul>
+      <li ng-repeat="message in messages">
+        <!-- edit a message -->
+        <input ng-model="message.text" ng-change="messages.$save(message)" />
+        <!-- delete a message -->
+        <button ng-click="messages.$remove(message)">Delete Message</button>
+      </li>
+    </ul>
+    <!-- push a new message onto the array -->
+    <form ng-submit="addMessage()">
+      <input ng-model="newMessageText" />
+      <button type="submit">Add Message</button>
+    </form>
+    <button type="button" name="button" ng-click="logIn()">Log In</button>
+    <button type="button" name="button" ng-click="logOut()">Log Out</button>
+  </body>
+</html>
